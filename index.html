@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSB TGT Arts - Full Course App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #f5f7fa;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1a2530);
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: var(--secondary-color);
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .whatsapp-link {
+            background-color: var(--success-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-link:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .app-content {
+            display: flex;
+            margin-top: 30px;
+            gap: 25px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            flex: 0 0 250px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-bottom: 8px;
+        }
+
+        .nav-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+            color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .welcome-banner h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-banner p {
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        /* Course Cards */
+        .section-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-header {
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .course-icon {
+            font-size: 24px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: var(--dark-color);
+            transition: all 0.2s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .course-link:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .link-icon {
+            color: var(--accent-color);
+        }
+
+        .course-link:hover .link-icon {
+            color: white;
+        }
+
+        /* PDF Section */
+        .pdf-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .pdf-download {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 15px;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .pdf-icon {
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+
+        .pdf-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .pdf-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .download-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #219653;
+        }
+
+        /* Notice Section */
+        .notice-section {
+            background-color: #fff9e6;
+            border-left: 5px solid var(--warning-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .notice-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--warning-color);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 25px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .app-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                width: 100%;
+            }
+            
+            .courses-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pdf-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>SSB TGT ARTS</h1>
+                        <p>Full Course by SR Study Point</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <a href="https://wa.me/918917270933" class="whatsapp-link" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contact: 8917270933
+                    </a>
+                    <p>Sanjay Sir</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main App Content -->
+    <div class="container app-content">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h3>Course Categories</h3>
+            <ul class="nav-menu">
+                <li><a href="#history" class="active"><span class="nav-icon"><i class="fas fa-landmark"></i></span> History</a></li>
+                <li><a href="#geography"><span class="nav-icon"><i class="fas fa-globe-asia"></i></span> Geography</a></li>
+                <li><a href="#polity"><span class="nav-icon"><i class="fas fa-balance-scale"></i></span> Polity</a></li>
+                <li><a href="#economics"><span class="nav-icon"><i class="fas fa-chart-line"></i></span> Economics</a></li>
+                <li><a href="#english"><span class="nav-icon"><i class="fas fa-language"></i></span> English Grammar</a></li>
+                <li><a href="#odia"><span class="nav-icon"><i class="fas fa-book"></i></span> Odia Grammar</a></li>
+                <li><a href="#pedagogy"><span class="nav-icon"><i class="fas fa-chalkboard-teacher"></i></span> Pedagogy</a></li>
+                <li><a href="#practice"><span class="nav-icon"><i class="fas fa-pen-fancy"></i></span> Practice Sets</a></li>
+                <li><a href="#pdf"><span class="nav-icon"><i class="fas fa-file-pdf"></i></span> PDF Materials</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Welcome Banner -->
+            <section class="welcome-banner">
+                <h2>Complete SSB TGT Arts Preparation</h2>
+                <p>Access comprehensive theory classes, topic-wise MCQs, practice sets, and study materials for all subjects. Prepared by expert educators at SR Study Point.</p>
+            </section>
+
+            <!-- Notice Section -->
+            <section class="notice-section">
+                <div class="notice-title">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h3>Important Notice</h3>
+                </div>
+                <p><strong>N.B:</strong> After providing link, payment should not be refundable. For any query call or message on WhatsApp - 8917270933 (Sanjay Sir)</p>
+            </section>
+
+            <!-- History Section -->
+            <h2 class="section-title" id="history">History</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3 class="course-title">History Theory</h3>
+                        <div class="course-icon"><i class="fas fa-landmark"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fBv-vcvlAeWvviC9FwX6IxU" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>SSB History Theory Playlist</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fCkZtoxdCHZRrbksC9fuenv" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fas fa-question-circle"></i></span>
+                            <span>History Topic Wise MCQ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Geography Card -->
+                <div class="course-card" id="geography">
+                    <div class="course-header">
+                        <h3 class="course-title">Geography</h3>
+                        <div class="course-icon"><i class="fas fa-globe-asia"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fDiV-tQjn-jVmdBCAoR-xSB" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>SSB Geography Theory Playlist</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fCf7dA-vj9-a0DTTEFGwwvB" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fas fa-question-circle"></i></span>
+                            <span>Geography Topic Wise MCQ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Polity Card -->
+                <div class="course-card" id="polity">
+                    <div class="course-header">
+                        <h3 class="course-title">Polity</h3>
+                        <div class="course-icon"><i class="fas fa-balance-scale"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fC6Kj3prFmQimFR-98p3oe3" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>SSB Polity Theory Playlist</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fCI6LkTKHemKyeVEYrDfVvU" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fas fa-question-circle"></i></span>
+                            <span>Polity Topic Wise MCQ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Economics Card -->
+                <div class="course-card" id="economics">
+                    <div class="course-header">
+                        <h3 class="course-title">Economics</h3>
+                        <div class="course-icon"><i class="fas fa-chart-line"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fAmXIgjZ_NRLtDTMMAvuStd" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>SSB Economics Theory Playlist</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fB_BAB8e7ODuXf2trvR4ndW" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fas fa-question-circle"></i></span>
+                            <span>Economics Topic Wise MCQ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- English Grammar Card -->
+                <div class="course-card" id="english">
+                    <div class="course-header">
+                        <h3 class="course-title">English Grammar</h3>
+                        <div class="course-icon"><i class="fas fa-language"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fDOO3d8xC5AEJt1G_iEo2ct" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>English Grammar Theory SSB TGT</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fAsVccCpI1Y3Vi7yDADi-my" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fas fa-question-circle"></i></span>
+                            <span>English Grammar Topic Wise MCQ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Odia Grammar Card -->
+                <div class="course-card" id="odia">
+                    <div class="course-header">
+                        <h3 class="course-title">Odia Grammar</h3>
+                        <div class="course-icon"><i class="fas fa-book"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fDmU7SEO-pOpinl8T6PFEuf" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>Odia Grammar SSB TGT</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pedagogy Card -->
+                <div class="course-card" id="pedagogy">
+                    <div class="course-header">
+                        <h3 class="course-title">Pedagogy</h3>
+                        <div class="course-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fAmapAIUqrx3GinwNLBW0SZ" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>Pedagogy Theory SSB TGT</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fDU4krlzQvq-xxLb9XAYmXj" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fas fa-question-circle"></i></span>
+                            <span>Pedagogy Topic Wise MCQ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Practice Sets Card -->
+                <div class="course-card" id="practice">
+                    <div class="course-header">
+                        <h3 class="course-title">Practice Sets</h3>
+                        <div class="course-icon"><i class="fas fa-pen-fancy"></i></div>
+                    </div>
+                    <div class="course-content">
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fDFo2dc7FFjIAGj01Q907ne" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>English Odia Practice Set</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fB7aloeyh9dBZSxmK_09Zwv" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>Social Science Practice Set</span>
+                        </a>
+                        <a href="https://www.youtube.com/playlist?list=PLWz1gvjLa_fAlhK8kLYQ9NWXROnCb8V3f" target="_blank" class="course-link">
+                            <span class="link-icon"><i class="fab fa-youtube"></i></span>
+                            <span>Pedagogy Practice Set</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PDF Materials Section -->
+            <section class="pdf-section" id="pdf">
+                <div class="pdf-header">
+                    <h2 class="section-title">Study Materials (PDF)</h2>
+                </div>
+                
+                <div class="pdf-download">
+                    <div class="pdf-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="pdf-info">
+                        <h4>All Class PDF Materials</h4>
+                        <p>Complete study materials, notes, and resources for all subjects in one place.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1sU21R0tT4wQPeHVCvA1Q5FyDDcQYda_K" target="_blank">
+                        <button class="download-btn">
+                            <i class="fas fa-download"></i> Access PDFs
+                        </button>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>SR Study Point</h1>
+                    <p>SSB TGT Arts Preparation</p>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://wa.me/918917270933" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#"><i class="fas fa-phone-alt"></i> Call: 8917270933</a>
+            </div>
+            
+            <p class="copyright">© 2023 SR Study Point. All course materials are for educational purposes only.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Course card hover effect enhancement
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            });
+        });
+        
+        // Highlight current section on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section-title, .pdf-section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if(pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id') || section.parentElement.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // WhatsApp contact click handler
+        document.querySelector('.whatsapp-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(this.href, '_blank');
+        });
+    </script>
+</body>
+</html>
